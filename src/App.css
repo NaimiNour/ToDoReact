@@ -1,0 +1,72 @@
+/* src/App.css */
+.container {
+  padding: 20px;
+  font-family: Arial;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.task-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.task-input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  background: #e9ecef;
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.task-item span {
+  flex: 1;
+  cursor: pointer;
+}
+
+.delete-button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-left: 10px;
+}
