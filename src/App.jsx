@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState } from "react";
 import "./App.css";
+import { useEffect } from "react";
 
 export default function App() {
   const [tasks, setTasks] = useState([
@@ -8,6 +9,15 @@ export default function App() {
     { id: 2, text: "Build project", completed: false },
   ]);
   const [newTask, setNewTask] = useState("");
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (savedTasks) setTasks(savedTasks);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   // Toggle task completion
   const toggleTask = (id) => {
