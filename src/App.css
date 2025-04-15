@@ -70,3 +70,8 @@
   cursor: pointer;
   margin-left: 10px;
 }
+/* Add to App.css */
+.dark-mode {
+  background: #333;
+  color: white;
+}

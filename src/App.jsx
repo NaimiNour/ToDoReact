@@ -1,7 +1,6 @@
-// src/App.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import { useEffect } from "react";
+import TaskItem from "./components/TaskItem"; // ✅ Proper import
 
 export default function App() {
   const [tasks, setTasks] = useState([
@@ -19,7 +18,6 @@ export default function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // Toggle task completion
   const toggleTask = (id) => {
     setTasks(
       tasks.map((task) =>
@@ -28,7 +26,6 @@ export default function App() {
     );
   };
 
-  // Add new task
   const addTask = () => {
     if (newTask.trim()) {
       setTasks([
@@ -43,7 +40,6 @@ export default function App() {
     }
   };
 
-  // Delete task
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
@@ -52,7 +48,6 @@ export default function App() {
     <div className="container">
       <h1>Task Manager</h1>
 
-      {/* Add Task Form */}
       <div className="task-input">
         <input
           type="text"
@@ -67,24 +62,14 @@ export default function App() {
         </button>
       </div>
 
-      {/* Task List */}
       <ul className="task-list">
         {tasks.map((task) => (
-          <li
+          <TaskItem
             key={task.id}
-            className={`task-item ${task.completed ? "completed" : ""}`}
-          >
-            <span onClick={() => toggleTask(task.id)}>{task.text}</span>
-            <button
-              className="delete-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTask(task.id);
-              }}
-            >
-              ×
-            </button>
-          </li>
+            task={task}
+            toggleTask={toggleTask}
+            deleteTask={deleteTask}
+          />
         ))}
       </ul>
     </div>
